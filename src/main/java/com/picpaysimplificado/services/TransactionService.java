@@ -38,7 +38,7 @@ public class TransactionService {
 
     boolean isAuthorized = this.autorizeTransaction(sender, transaction.value());
     if (!isAuthorized) {
-      throw new Exception("transação não autorizada");
+      throw new Exception("Transação não autorizada");
     }
 
     Transaction newTransaction = new Transaction();
@@ -65,7 +65,7 @@ public class TransactionService {
         Map.class);
 
     if (autorizationResponse.getStatusCode() == HttpStatus.OK) {
-      String message = (String) autorizationResponse.getBody().get("message");
+      String message = (String) autorizationResponse.getBody().get("status");
       return "Success".equalsIgnoreCase(message);
     } else
       return false;
